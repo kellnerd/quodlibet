@@ -181,7 +181,7 @@ class ListenBrainzSubmitQueue:
             ("recording_mbid", song.get("musicbrainz_trackid", None)),
             ("track_mbid", song.get("musicbrainz_releasetrackid", None)),
             ("work_mbids", song.list("musicbrainz_workid")),
-            ("tracknumber", song.get("tracknumber", None)),
+            ("tracknumber", song.get("~#track", None)),
             ("isrc", song.get("isrc", None)),
             ("tags", self.tags),
         ]:
