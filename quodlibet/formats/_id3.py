@@ -56,6 +56,7 @@ class ID3File(AudioFile):
            "TMOO": "mood",
            "TBPM": "bpm",
            "TDRC": "date",
+           "TDRL": "releasedate",
            "TDOR": "originaldate",
            "TOAL": "originalalbum",
            "TOPE": "originalartist",
