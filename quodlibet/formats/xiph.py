@@ -9,6 +9,7 @@
 
 import sys
 import base64
+import re
 
 
 import mutagen
@@ -116,6 +117,27 @@ class MutagenVCFile(AudioFile):
 
         if "coverartmime" in self:
             del(self["coverartmime"])
+
+        # Correctly read performer tags which were written by Picard.
+        # https://picard-docs.musicbrainz.org/downloads/MusicBrainz_Picard_Tag_Map.html
+        # Parse "performer = artist (role)" into "performer:role = artist".
+        if "performer" in self:
+            performers: list[str] = self["performer"].split("\n")
+            performer_tags: dict[str, set[str]] = dict()
+            for performer in performers:
+                role_match = re.match(r"(.+?) \((.+)\)$", performer)
+                key = "performer"
+                if role_match:
+                    (artist, role) = role_match.groups()
+                    key = f"{key}:{role}"
+                    performer = artist
+                if not key in performer_tags:
+                    performer_tags[key] = set()
+                performer_tags[key].add(performer)
+
+            del(self["performer"])
+            for key, value in performer_tags.items():
+                self[key] = "\n".join(value)
 
         self.__post_read_total("tracktotal", "totaltracks", "tracknumber")
         self.__post_read_total("disctotal", "totaldiscs", "discnumber")
