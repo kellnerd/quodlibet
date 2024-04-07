@@ -30,6 +30,7 @@ from gi.repository import Gtk, GLib
 import quodlibet
 from quodlibet import _
 from quodlibet import app, qltk
+from quodlibet.const import VERSION
 from quodlibet.pattern import Pattern
 from quodlibet.query import Query
 from quodlibet.plugins.events import EventPlugin
@@ -166,7 +167,12 @@ class ListenBrainzSubmitQueue:
         # isrc			ISRC
         # spotify_id		N/A
         # tags			N/A
-        additional_info = {}
+        additional_info = {
+            "media_player": app.name,
+            "media_player_version": VERSION,
+            "submission_client": app.name,
+            "submission_client_version": VERSION,
+        }
 
         for k, v in [
             ("artist_mbids", song.list("musicbrainz_artistid")),
