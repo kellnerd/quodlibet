@@ -929,6 +929,14 @@ class AudioFile(dict, ImageContainer, HasKey):
             if key in NUMERIC_ZERO_DEFAULT and val == 0:
                 del self[key]
 
+        # HACK: Prefer Picards multi value artist tags.
+        if "artists" in self:
+            self["artist"] = self["artists"]
+            del self["artists"]
+        if "albumartists" in self:
+            self["albumartist"] = self["albumartists"]
+            del self["albumartists"]
+
         if filename:
             self["~filename"] = filename
         elif "~filename" not in self:
