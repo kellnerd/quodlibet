@@ -103,7 +103,7 @@ SORT_TO_TAG = {v: k for (k, v) in TAG_TO_SORT.items()}
 PEOPLE_SORT = [TAG_TO_SORT.get(k, k) for k in PEOPLE]
 """Sources for ~peoplesort, most important first"""
 
-VARIOUS_ARTISTS_VALUES = "V.A.", "various artists", "Various Artists"
+VARIOUS_ARTISTS_VALUES = "V.A.", "[various]", "various artists", "Various Artists"
 """Values for ~people representing lots of people, most important last"""
 
 
