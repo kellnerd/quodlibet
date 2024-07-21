@@ -67,6 +67,7 @@ PEOPLE = [
     "albumartist",
     "author",
     "composer",
+    "writer",
     "~performers",
     "originalartist",
     "producer",
