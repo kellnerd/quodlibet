@@ -49,7 +49,7 @@ MIGRATE = {"~#playcount", "~#laststarted", "~#lastplayed", "~#added",
            "~#skipcount", "~#rating", "~bookmark"}
 """These get migrated if a song gets reloaded"""
 
-PEOPLE = ["artist", "albumartist", "author", "composer", "~performers",
+PEOPLE = ["artist", "albumartist", "author", "composer", "writer", "~performers",
           "originalartist", "producer", "lyricist", "arranger", "conductor"]
 """Sources of the ~people tag, most important first"""
 

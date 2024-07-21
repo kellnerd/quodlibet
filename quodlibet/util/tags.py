@@ -105,6 +105,7 @@ _TAGS = {t.name: t for t in [
     T("title", "u", _("title")),
     T("version", "u", _("version")),
     T("website", "u", _("website")),
+    T("writer", "us", _("writer"), _("writers")),
 
     T("albumartist", "us", _("album artist")),
     T("bpm", "u", _("BPM")),
