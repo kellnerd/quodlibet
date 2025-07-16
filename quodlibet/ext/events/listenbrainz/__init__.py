@@ -175,7 +175,7 @@ class ListenBrainzSubmitQueue:
         }
 
         for k, v in [
-            ("duration", song("~#length")), # in seconds
+            ("duration", song("~#length")),  # in seconds
             ("artist_mbids", song.list("musicbrainz_artistid")),
             ("release_group_mbid", song.get("musicbrainz_releasegroupid", None)),
             ("release_mbid", song.get("musicbrainz_albumid", None)),
