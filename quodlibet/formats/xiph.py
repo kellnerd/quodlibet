@@ -123,7 +123,7 @@ class MutagenVCFile(AudioFile):
         # Parse "performer = artist (role)" into "performer:role = artist".
         if "performer" in self:
             performers: list[str] = self["performer"].split("\n")
-            performer_tags: dict[str, set[str]] = {}
+            performer_tags: dict[str, list[str]] = {}
             for performer in performers:
                 role_match = re.match(r"(.+?) \((.+)\)$", performer)
                 key = "performer"
@@ -132,8 +132,8 @@ class MutagenVCFile(AudioFile):
                     key = f"{key}:{role}"
                     performer = artist
                 if key not in performer_tags:
-                    performer_tags[key] = set()
-                performer_tags[key].add(performer)
+                    performer_tags[key] = []
+                performer_tags[key].append(performer)
 
             del self["performer"]
             for key, value in performer_tags.items():
